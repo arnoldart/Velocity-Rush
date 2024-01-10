@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class LapSystem : MonoBehaviour
 {
-    public int totalLaps = 3; // Jumlah total putaran yang diperlukan untuk menyelesaikan balapan
-    public Text lapText; // UI Text untuk menampilkan informasi lap
+    public int totalLaps = 3; 
+    public Text lapText; 
     public GameObject finishText; 
     
     private int currentLap = 0;
@@ -18,19 +18,19 @@ public class LapSystem : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Memeriksa apakah objek yang masuk ke dalam trigger adalah objek kendaraan (sesuaikan tag atau komponen lain jika perlu)
+        
         if (other.CompareTag("Player"))
         {
             CompleteLap();
         }
     }
 
-    // Panggil metode ini saat balapan selesai satu lap
+    
     void CompleteLap()
     {
         currentLap++;
 
-        // Periksa apakah balapan sudah selesai
+        
         if (currentLap > totalLaps)
         {
             RaceFinished();

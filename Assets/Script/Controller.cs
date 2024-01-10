@@ -50,19 +50,19 @@ public class Controller : MonoBehaviour
     private int currentGear = 0;
     private bool handbrakeActivated = false;
 
-    public float handbrakeReduction = 0.9f; // Nilai ini dapat disesuaikan
+    public float handbrakeReduction = 0.9f; 
 
     void Start()
     {
         kartRigidbody = GetComponent<Rigidbody>();
 
-        // Audio untuk mesin
+        
         engineAudio = gameObject.AddComponent<AudioSource>();
         engineAudio.clip = engineSound;
         engineAudio.loop = true;
         engineAudio.Play();
 
-        // Audio untuk handbrake
+        
         handbrakeAudio = gameObject.AddComponent<AudioSource>();
         handbrakeAudio.clip = handbrakeSound;
         handbrakeAudio.loop = true;
@@ -106,8 +106,8 @@ public class Controller : MonoBehaviour
 
         if (handbrakeActivated)
         {
-            // Mengurangi kecepatan mobil agar mundur
-            float reverseForce = -50f; // Nilai ini dapat disesuaikan
+            
+            float reverseForce = -50f; 
             kartRigidbody.AddForce(transform.forward * reverseForce, ForceMode.Acceleration);
         }
         else
@@ -119,13 +119,13 @@ public class Controller : MonoBehaviour
         Quaternion deltaRotation = Quaternion.Euler(0, steering * Time.deltaTime, 0);
         kartRigidbody.MoveRotation(kartRigidbody.rotation * deltaRotation);
 
-        // Update UI Speedometer
+        
         if (speedometerText != null)
         {
             speedometerText.text = "Speed: " + Mathf.Round(cappedSpeed) + " mph";
         }
 
-        // Mengatur pitch suara mesin berdasarkan kecepatan
+       
         engineAudio.pitch = 0.5f + 0.5f * (speed / maxSpeedMPH);
     }
 
